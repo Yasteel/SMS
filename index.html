@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Stock Management System</title>
+    <link rel="stylesheet" href="css/structure.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="stock_display">
+        <div class="header">
+          <img src="img/logo.png" alt="Logo_Pinion Paperless" width="200">
+        </div>
+        <div class="search">
+          <input type="text" class="search_bar" placeholder="Enter product ID/name/category">
+          <button type="button" class="btn_search" data-title="Use Keywords to search or leave blank to show all"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="report">
+          <table>
+            <thead>
+              <tr>
+                <th>Product ID</th>
+                <th>Category</th>
+                <th>Product</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <div class="buttons">
+          <button type="button" class="btn_open_add"><i class="fas fa-plus"></i></button>
+          <span>Add Product</span>
+          <button type="button" class="btn_open_edit"><i class="fas fa-pen"></i></button>
+          <span>Edit Products</span>
+          <button type="button" class="btn_open_report"><i class="fas fa-paper-plane"></i></button>
+          <span>Send Report</span>
+        </div>
+      </div>
+      <div class="stock_edit">
+        <div class="card">
+          <div class="card_header">
+            <p><i class="far fa-calendar-alt"></i> <span class="date">Friday, 7 May 2021</span> </p>
+          </div>
+          <div class="card_body">
+            <i class="fas fa-times-circle close close_edit"></i>
+            <select class="product"></select>
+            <button type="button" class="scan" data-title="Scan QR code"><i class="fas fa-qrcode"></i></button>
+            <input type="text" class="quantity" placeholder="Enter Quantity">
+            <button type="button" class="btn btn_update">Update Product</button>
+          </div>
+        </div>
+        <div class="scanner">
+          <canvas id="canvas_add" width="300" height="300" style="background: black;"></canvas>
+          <div class="status_message">
+            <p>Waiting To Scan <span class="timer"><i class="fas fa-hourglass-start"></i></span></p>
+          </div>
+        </div>
+      </div>
+      <div class="stock_add">
+        <div class="card">
+          <div class="card_header">
+            <p><i class="far fa-calendar-alt"></i> <span class="date"></span> </p>
+          </div>
+          <div class="card_body">
+            <i class="fas fa-times-circle close close_add"></i>
+            <input type="text" placeholder="Enter Product" class="product">
+            <select class="category">
+              <option value="default">-- Choose a category --</option>
+              <option value="clothing">Clothing</option>
+              <option value="Shoes">Footwear</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Jewelry">Jewelry</option>
+            </select>
+            <input type="text" class="quantity" placeholder="Enter Quantity">
+            <button type="button" class="btn btn_add">Add Product</button>
+          </div>
+        </div>
+        <div class="card qr_code">
+          <div class="card_header">
+            <p>QR Code has been Generated</p>
+          </div>
+          <div class="card_body">
+            <img src="" width="100px" alt="QR Code" class="qr_img">
+            <button type="button" class="btn btn_download">Download Code</button>
+          </div>
+        </div>
+      </div>
+      <div class="send_report">
+        <div class="card">
+          <div class="card_header">
+            <p><i class="fas fa-chart-bar"> </i> <span>Send Stock Report</span></p>
+            <span data-title="Generates a Report and Sends it to the specified email address"><i class="fas fa-question-circle" ></i></span>
+          </div>
+          <div class="card_body">
+            <i class="fas fa-times-circle close close_report"></i>
+            <input type="text" class="email" placeholder="Enter Email Address">
+            <button type="button" class="btn btn_send_report">Send Report</button>
+          </div>
+        </div>
+      </div>
+      <div class="alert_message">
+        <p class="message"></p>
+        <span><i class="message_type_icon fas"></i></span>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script src="js/jsQR.js"></script>
+    <script type="text/javascript" src="js/FileSaver.min.js"></script>
+  </body>
+</html>

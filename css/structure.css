@@ -1,0 +1,441 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper
+{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.stock_display
+{
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+}
+
+.header
+{
+  width: 100vw;
+  height: 100%;
+  grid-row: 1/2;
+  grid-column: 1/3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.stock_display .search
+{
+  grid-row: 2/3;
+  grid-column: 1/3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 70px;
+}
+
+.search input
+{
+	width: 300px;
+	height: 35px;
+  margin-right: 25px;
+}
+
+.search button
+{
+	width: 35px;
+  height: 35px;
+  margin: 0 40px 0 -25px;
+}
+
+tbody
+{
+    display: block;
+    height: 550px;
+    overflow: auto;
+}
+thead tr, tbody tr
+{
+    display: table;
+    width: 100%;
+    height: 60px;
+    table-layout: fixed;
+}
+thead
+{
+    width: calc( 100% - 1em )
+}
+table
+{
+    width: 90%;
+    margin-left: 65px;
+}
+
+.buttons
+{
+  display: flex;
+}
+
+.buttons button
+{
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+}
+
+.buttons span
+{
+  position: relative;
+  opacity: 0;
+}
+
+
+.buttons button:hover + span
+{
+  animation-name: grow;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in;
+
+}
+
+@keyframes grow {
+  from {opacity: 0; }
+  to {opacity: 1; }
+}
+
+.stock_edit,
+.stock_add,
+.send_report
+{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.stock_edit.show,
+.stock_add.show,
+.send_report.show
+{
+  display: flex;
+}
+
+.card .card_header
+{
+  background: var(--blueish);
+  color: var(--blackish);
+  font-family: helvetica;
+  font-size: 1.2rem;
+  padding: 20px 40px;
+}
+
+.card .card_header p span
+{
+  color: var(--blackish);
+  margin-left: 10px;
+}
+
+.card .card_body
+{
+  min-width: 460px;
+  padding: 40px;
+
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas: 'product product product scan'
+                       'quantity quantity quantity quantity'
+                       '. . . .'
+                       '. . . .'
+                       'btn btn btn btn';
+}
+
+.stock_add .card .card_body
+{
+  grid-template-areas: 'product'
+                       'category'
+                       'quantity'
+                       '.'
+                       'btn';
+}
+
+.stock_add .card.qr_code .card_body
+{
+  grid-template-rows: 76% 24%;
+  grid-template-areas: none;
+  grid-template-areas: 'qrCode' 'btn';
+}
+
+.product{ grid-area: product; height: 50px; }
+.scan { grid-area: scan; height: 50px; }
+.date { grid-area: date; height: 50px; }
+.quantity { grid-area: quantity; height: 50px; }
+.btn { grid-area: btn; height: 50px; }
+.category { grid-area: category; height: 50px; }
+.qr_img {grid-area: qrCode; width: 55%;}
+
+
+.card.qr_code
+{
+  display: none;
+}
+.card.qr_code.show
+{
+  display: block;
+}
+
+.product,
+.date,
+.quantity
+{
+  padding: 10px;
+}
+
+.send_report .card_header
+{
+  display: flex;
+  justify-content: space-between;
+}
+
+.send_report .card_body
+{
+  height: auto;
+  grid-template-areas: 'email' 'btn';
+}
+
+.send_report .email
+{
+  padding: 25px;
+  height: 50px;
+  margin: 20px 0 30px 0;
+}
+
+.card .close
+{
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+
+
+select {
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px;
+}
+
+.scanner
+{
+  display: none;
+  margin: -110px 0 0 50px;
+}
+
+.scanner.show
+{
+  display: block;
+}
+
+.scanner canvas
+{
+  height: 300px;
+  width: 300px;
+}
+
+.status_message
+{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status_message p
+{
+  text-align: center;
+
+}
+
+.status_message p span
+{
+  margin-left: 15px;
+}
+
+.alert_message
+{
+  width: auto;
+  height: 50px;
+  padding: 0 20px 0 0;
+  position: absolute;
+  left: -500px;
+  bottom: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  transition: 600ms ease-in-out;
+}
+
+.alert_message.show
+{
+  left: 30px;
+}
+
+.alert_message::before
+{
+  content: '';
+  width: 20px;
+  height: 20px;
+  transform: translateX(-10px) rotate(45deg);
+}
+
+[data-title] {
+  font-size: 1.4rem;
+  position: relative;
+}
+
+[data-title]:hover::before {
+  content: attr(data-title);
+  position: absolute;
+  left: 65px;
+  display: inline-block;
+  padding: 10px 6px;
+  border-radius: 2px;
+  background: var(--blackish);
+  color: var(--blueish);
+  font-size: 12px;
+  font-family: sans-serif;
+  white-space: nowrap;
+}
+
+/* Media Queries */
+/* =================Table Screen Size============================ */
+@media only screen and (min-width: 768px)
+{
+  .stock_display
+  {
+    grid-template-rows: 80px 80px auto;
+    grid-template-columns: auto 220px;
+  }
+
+  .report
+  {
+    grid-row: 3/4;
+    grid-column: 1/3;
+  }
+
+  .buttons
+  {
+    grid-row: 4/5;
+    grid-column: 1/3;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .buttons button
+  {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+    margin: 0 0 0 100px;
+  }
+
+  .buttons span
+  {
+    top: 20px;
+    left: 30px;
+    font-size: 24px;
+  }
+
+  tbody
+  {
+    height: 940px;
+  }
+
+  .card .card_body
+  {
+    height: 30vh;
+  }
+
+  .send_report .card_body
+  {
+    height: 20vh;
+  }
+}
+
+/* =================laptop/Desktop Screen Size============================ */
+
+@media only screen and (min-width: 992px)
+{
+  .stock_display
+  {
+    grid-template-rows: 60px 60px auto;
+    grid-template-columns: auto 220px;
+  }
+
+  .report
+  {
+    grid-row: 3/4;
+    grid-column: 1/2;
+  }
+
+  .buttons
+  {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .buttons button
+  {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+    margin: 0 0 35px 0;
+  }
+
+  .buttons span
+  {
+    top: -73px;
+    left: 85px;
+    font-size: 1rem;
+  }
+
+  tbody
+  {
+      display: block;
+      height: 550px;
+      overflow: auto;
+  }
+
+  .card .card_body
+  {
+    height: 50vh;
+  }
+
+  .send_report .card_body
+  {
+    height: auto;
+  }
+}

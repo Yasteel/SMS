@@ -1,0 +1,244 @@
+:root
+{
+	--error: #a72a30;
+	--tableHeader: #161920;
+	--blackish: #373F51;
+	--grayish: #646b7a;
+	--tableRowHover: #bcc0c7;
+	--whiteish: #D8DBE2;
+	--blueish: #1CB5E0;
+	--tableTextHighlight: #1690b3;
+}
+
+.header
+{
+	background: var(--whiteish);
+	color: var(--blueish);
+	font-family: helvetica;
+	font-size: 1.4rem;
+	font-weight: 600;
+}
+
+.wrapper
+{
+  background: linear-gradient(70deg, var(--whiteish) 15%, var(--blackish) 105%);
+}
+
+.search input
+{
+	background: none;
+	color: var(--blackish);
+	border: 1px solid var(--blueish);
+}
+
+.search button
+{
+	background: var(--blueish);
+	border: 1px solid var(--blueish);
+	outline: none;
+	transition: 400ms ease-in;
+}
+
+.search button:hover
+{
+	cursor: pointer;
+	font-size: 18px;
+}
+
+.report table,tr,th,td
+{
+	border-collapse: collapse;
+	text-align: center;
+	color: var(--whiteish);
+}
+
+.report table thead tr
+{
+	background: var(--tableHeader);
+	background: var(--blackish);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.report tbody
+{
+	scrollbar-color: var(--whiteish) var(--blackish);
+	scrollbar-width: none;
+	font-family: verdana;
+}
+
+.report tbody tr
+{
+	background: var(--whiteish);
+	border-top: 1px solid var(--whiteish);
+	margin: 0 0 5px 0;
+}
+
+.report tbody tr td
+{
+	color: var(--blackish);
+}
+
+
+.report tbody tr:hover
+{
+	background: var(--tableRowHover);
+}
+
+.report tbody tr:hover > td
+{
+	/* color: var(--blueish); */
+	color: var(--tableTextHighlight);
+}
+
+
+.report th
+{
+	color: var(--whiteish);
+	font-family: helvetica;
+	font-size: 1.2rem;
+	font-weight: 800;
+}
+
+.buttons button
+{
+	color: var(--blueish);
+	background: none;
+	transition: 400ms ease-in;
+	cursor: pointer;
+	border: 1px solid var(--blueish);
+}
+
+.buttons button:hover
+{
+	transform: scale(110%);
+	background: var(--blueish);
+	color: black;
+}
+
+.buttons span
+{
+	text-align: left;
+	color: var(--blueish);
+	font-family: helvetica;
+}
+
+
+.stock_edit,
+.stock_add,
+.send_report
+{
+	background: rgba(255,255,255,0.6);
+}
+
+
+.card
+{
+	background: var(--blackish);
+}
+
+.product,
+.date,
+.quantity,
+.product option,
+.category,
+.file,
+.email
+{
+	font-size: 1rem;
+	border: 1px solid var(--blueish);
+	outline: none;
+	background: none;
+	color: var(--blueish);
+
+}
+
+.scan,
+.card .btn
+{
+	font-size: 1.2rem;
+	border: none;
+	outline: none;
+	background: var(--blueish);
+	cursor: pointer;
+	transition: 400ms ease-in;
+}
+
+.scan:hover,
+.card .btn:hover
+{
+	background: none;
+	border: 1px solid var(--blueish);
+	color: var(--blueish);
+}
+
+.card .close
+{
+	font-size: 1.8em;
+	color: var(--blackish);
+	cursor: pointer;
+}
+
+.card .close:hover
+{
+	color: var(--blueish);
+}
+
+.error
+{
+	border: 2px solid var(--error);
+}
+
+.scanner p
+{
+	font-size: 1.2rem;
+	font-family: helvetica;
+}
+
+.scanner p span
+{
+  /* color: var(--blueish); */
+	display: inline-block;
+
+	font-size: 24px;
+	animation-name: rotate;
+	animation-duration: 1200ms;
+	animation-fill-mode: both;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+	to{ transform: rotate(180deg);}
+}
+
+.status_message
+{
+	background: var(--blackish);
+	color: var(--blueish);
+}
+
+.alert_message
+{
+	font-size: 16px;
+  font-family: helvetica;
+
+}
+.alert_message,
+.alert_message::before
+{
+	background: var(--blackish);
+}
+
+.alert_message.success,
+.alert_message.success.alert_message::before
+{
+	color: var(--blueish);
+}
+
+.alert_message.fail,
+.alert_message.fail.alert_message::before
+{
+	background: var(--whiteish);
+	color: var(--error);
+}
